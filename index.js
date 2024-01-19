@@ -11,6 +11,9 @@ const medicineRoute = require('./routes/medicineRoute');
 
 const app = express();
 mongoose.connect("mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set("strictQuery", false);
+
+
 
 app.use(cors());
 app.use(bodyParser.json());

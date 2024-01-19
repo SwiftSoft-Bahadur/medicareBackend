@@ -14,7 +14,6 @@ RUN npm install
 COPY . .
 
 # Expose the port on which the application will run
-EXPOSE 3000
-
+EXPOSE $PORT
 # Define the command to run your application
 ENTRYPOINT ["npm", "start"]

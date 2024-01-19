@@ -10,7 +10,7 @@ const authRoute = require('./routes/auth');
 const medicineRoute = require('./routes/medicineRoute');
 
 const app = express();
-mongoose.connect(config.mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare", { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
 app.use(bodyParser.json());

@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passportJwt.initialize());
 app.use('/api/auth', authRoute);
-app.use('/api/medicine', medicineRoute);
+app.use('/api/medi', medicineRoute);
 app.use(errorHandler);
 
 

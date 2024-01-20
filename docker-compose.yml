@@ -2,9 +2,10 @@ version: '3'
 
 services:
   backend-api:
+    image: node-backend
     build:
       context: .
-      dockerfile: Dockerfile  # Replace with your actual Dockerfile name
+      dockerfile: DockerfileBackend
     ports:
       - "3000:3000"
     networks:

@@ -16,7 +16,7 @@ module.exports = {
                 redisConfig.password = config.redisPassword;
             }
             client = redis.createClient(redisConfig);
-            client.hGet = util.promisify(client.hGet);
+            client.hget = util.promisify(client.hget);
         }
         return client;
     }

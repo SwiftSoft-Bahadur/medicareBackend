@@ -10,6 +10,15 @@ services:
       - "3000:3000"
     networks:
       - allNet
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    networks:
+      - allNet
 
 networks:
   allNet:

@@ -10,17 +10,18 @@ const authRoute = require('./routes/auth');
 const medicineRoute = require('./routes/medicineRoute');
 
 const app = express();
-mongoose.connect("mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("strictQuery", false);
+mongoose.connect("mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare");
+// mongoose.connect(config.mongoURL);
 
-
-
-app.use(cors());
+app.use(cors())
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passportJwt.initialize());
-app.use('/api/auth', authRoute);
+app.use('/api/auth', passportJwt.authenticate(), authRoute);
 app.use('/api/medi', medicineRoute);
+
+//ErrorHandler
 app.use(errorHandler);
 
 

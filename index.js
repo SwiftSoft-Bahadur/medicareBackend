@@ -18,8 +18,8 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passportJwt.initialize());
-app.use('/api/auth', passportJwt.authenticate(), authRoute);
-app.use('/api/medi', medicineRoute);
+app.use('/api/auth', authRoute);
+app.use('/api/medi', passportJwt.authenticate(), medicineRoute);
 
 //ErrorHandler
 app.use(errorHandler);

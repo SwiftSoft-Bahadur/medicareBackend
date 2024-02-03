@@ -1,7 +1,6 @@
 module.exports = {
     jwtSecret: process.env.jwtSecret,
-    // mongoURL: process.env.mongoURL ,
-    mongoURL: "//mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare" ,
+    mongoURL: process.env.mongoURL ,
     redisHOST: process.env.redisHOST,
     redisPORT: process.env.redisPORT,
     redisPassword: process.env.redisPassword,

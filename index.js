@@ -9,10 +9,16 @@ const errorHandler = require('./middleware/errorHandler');
 const authRoute = require('./routes/auth');
 const medicineRoute = require('./routes/medicineRoute');
 
+const dotenv = require('dotenv');
+dotenv.config(); // Load environment variables from .env file
+
 
 const app = express();
 mongoose.set("strictQuery", false);
-mongoose.connect(config.mongoURL);
+
+// Use environment variables in your application
+const MONGO_URL = process.env.mongoURL;
+mongoose.connect(MONGO_URL);
 
 app.use(cors())
 app.use(bodyParser.json());

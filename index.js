@@ -9,6 +9,7 @@ const errorHandler = require('./middleware/errorHandler');
 const authRoute = require('./routes/auth');
 const medicineRoute = require('./routes/medicineRoute');
 
+
 const app = express();
 mongoose.set("strictQuery", false);
 mongoose.connect(config.mongoURL);

@@ -16,4 +16,4 @@ COPY . .
 # Expose the port on which the application will run
 EXPOSE $PORT
 # Define the command to run your application
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "start"]

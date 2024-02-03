@@ -3,22 +3,17 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const config = require('./config');
 const passportJwt = require('./middleware/passportJWT')();
 const errorHandler = require('./middleware/errorHandler');
 const authRoute = require('./routes/auth');
 const medicineRoute = require('./routes/medicineRoute');
 
-const dotenv = require('dotenv');
-dotenv.config(); // Load environment variables from .env file
-
 
 const app = express();
-mongoose.set("strictQuery", false);
 
-// Use environment variables in your application
-const MONGO_URL = process.env.mongoURL;
-const MONGO_PORT = process.env.PORT || 3000
-mongoose.connect(MONGO_URL);
+mongoose.set("strictQuery", false);
+mongoose.connect(config.mongoURL);
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -32,4 +27,4 @@ app.use('/api/medi',  medicineRoute);
 app.use(errorHandler);
 
 
-app.listen(MONGO_PORT, () => console.log(`Listing...`));
+app.listen(config.port, () => console.log(`Listing...`));

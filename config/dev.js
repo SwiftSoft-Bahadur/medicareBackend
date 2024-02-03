@@ -1,6 +1,6 @@
 module.exports = {
     jwtSecret: "dfsaddfasdfdsafsdfdsf",
-    mongoURL: "mongodb+srv://Bahadur:5621@cluster0.hjvag.mongodb.net/medicare",
+    mongoURL: "mongodb://mongodb-service:27017/medicare",
     redisHOST: "127.0.0.1",
     redisPORT: "6379",
     redisPassword: null,

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-rest-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-rest-api
+  template:
+    metadata:
+      labels:
+        app: node-rest-api
+    spec:
+      containers:
+      - name: medicare-container
+        image: 562100/medicare
+        ports:
+        - containerPort: 3000
+        env:
+          - name: NODE_ENV
+            value: "production"
+          - name: MONGO_URL
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-env
+                key: MONGO_URL
+          - name: MONGO_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-env
+                key: MONGO_PORT
+          - name: JWT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-env
+                key: jwtSecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-rest-api-service
+spec:
+  selector:
+    app: node-rest-api
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      name: http
+    - protocol: TCP
+      port: 443
+      targetPort: 3000
+      name: https
+
